@@ -1,22 +1,37 @@
-let video = null;
-let canvas = null;
-let context = null; 
+let VIDEO = null;
+let CANVAS = null;
+let CONTEXT = null;
+// let SCALER = 1;
+// let SIZE = { x: 0, y: 0, width: 0, heigth: 0 };
 
 
 
 function main() {
-    canvas = document.getElementById("myCanvas");
-    context = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.heigth = window.innerHeight;
+    console.log("main")
+    CANVAS = document.querySelector(".myCanvas");
+    CONTEXT = CANVAS.getContext("2d");
+    CANVAS.width = window.innerWidth;
+    CANVAS.heigth = window.innerHeight;
 
-    let promise = navigator.mediaDevices.getUserMedia({ vide: true });
+    console.log(CANVAS.width);
+    console.log(CANVAS.heigth);
+
+    let promise = navigator.mediaDevices.getUserMedia({ video: true });
     promise.then(function (signal) {
-        video = document.createElement("video");
-        video.srcObject = signal;
-        video.play();
+        VIDEO = document.createElement("video");
+        VIDEO.srcObject = signal;
+        VIDEO.play();
 
-        video.onloadeddata = function () {
+        VIDEO.onloadeddata = function () {
+            // let resizer = SCALER *
+            //     Math.min(
+            //         window.innerWidth / VIDEO.videoWidth,
+            //         window.innerHeight / VIDEO.videoHeight
+            //     );
+           // SIZE.width = resizer * VIDEO.videoWidth;
+            //SIZE.heigth = resizer * VIDEO.videoHeight;
+            //SIZE.x = window.innerWidth / 2 - SIZE.width / 2;
+            //SIZE.y = window.innerHeight / 2 - SIZE.heigth / 2;
             updateCanvas();
         }
         
@@ -27,6 +42,6 @@ function main() {
 }
 
 function updateCanvas() {
-    context.drawImage(video, 0, 0);
+    CONTEXT.drawImage(VIDEO, 0,0);
     window.requestAnimationFrame(updateCanvas);
 }
