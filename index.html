@@ -7,7 +7,7 @@
 
 	<body onload="main()">
 		<canvas id="myCanvas"></canvas>
-		<div id="menuItems">
+		<div id="menuItems" class="menu">
 			<div id="menu">
 				<div id="controls">
 					<img src="title.png" style="width: 90%" />
@@ -27,5 +27,26 @@
 			</div>
 		</div>
 		<div id="time"></div>
+
+		<div id="endScreen" class="menu" style="display: none">
+			<img src="title.png" style="width: 90%" />
+			<br />
+			<br />
+			<div id="scoreValue"></div>
+			<input type="text" id="name" placeholder="your name" />
+			<button onclick="saveScore()" id="saveBtn">Save</button>
+			<br />
+			<br />
+			<button onclick="showScores()">show Scores</button>
+			<button onclick="showMenu()">Menu</button>
+		</div>
+		<div id="scoresScreen" class="menu" style="display: none">
+			<img src="title.png" style="width: 90%" />
+			<br />
+			<br />
+			<div id="scoresContainer"></div>
+			<br />
+			<button onclick="closeScores()">Back</button>
+		</div>
 	</body>
 </html>
